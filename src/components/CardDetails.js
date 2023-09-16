@@ -8,15 +8,23 @@ import CardMedia from "@mui/material/CardMedia";
 import { CardActionArea, Rating } from "@mui/material";
 import LoadingDetails from "../pages/LoadingDetails";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 const CardDetails = () => {
   const params = useParams();
   const [hotelInfo, setHotelInfo] = useState({});
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => alert("Please login for reservation confirmation!");
+  const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [isLoading, setLoading] = useState(false);
- 
+  const navigate = useNavigate();
+
+  const checkFun = () => {
+    const user = JSON.parse(localStorage.getItem("isLogin"));
+    if (user) {
+      navigate("/history");
+    } else alert("Please login for reservation confirmation!");
+  };
   useEffect(() => {
     setLoading(true);
     axios
@@ -35,9 +43,12 @@ const CardDetails = () => {
     <LoadingDetails />
   ) : (
     <Container maxWidth="lg" sx={{ marginTop: 10, marginBottom: 10 }}>
-      <Typography variant="h4" sx={{    fontSize: "22px",
-    fontWeight: "600",
-    marginBottom: "20px"}}>{hotelInfo.name}</Typography>
+      <Typography
+        variant="h4"
+        sx={{ fontSize: "22px", fontWeight: "600", marginBottom: "20px" }}
+      >
+        {hotelInfo.name}
+      </Typography>
       <Grid container justifyContent={"center"} spacing={2}>
         {hotelInfo.images?.map((image) => {
           return (
@@ -66,7 +77,7 @@ const CardDetails = () => {
             </Grid>
           );
         })}
-        <Grid style={{padding:"20px"}}>
+        <Grid style={{ padding: "20px" }}>
           <Typography>{hotelInfo.aboutThePlace}</Typography>
           <h2>What this place offers:</h2>
           <Typography>
@@ -78,9 +89,8 @@ const CardDetails = () => {
           </Typography>
         </Grid>
         <div className="button">
-          <Button onClick={handleOpen} 
-          style={{ textAlign: "right" }}>
-       Reserve   
+          <Button onClick={checkFun} style={{ textAlign: "right" }}>
+            Reserve
           </Button>
         </div>
         {open && (

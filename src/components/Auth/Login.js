@@ -33,7 +33,7 @@ export   function Login() {
 
   if(user ){
     if( user.email === users.email && user.password === users.password){
-      navigate("/")
+      navigate("/history")
        localStorage.setItem("isLogin", true)
     }else
        alert("authentication failed");
