@@ -7,14 +7,16 @@ const Layout = (props) => {
   const [name, setName] = useState();
   useEffect(() => {
    
-   
-    let users = JSON.parse(localStorage.getItem("isLogin"))
+     let users = JSON.parse(localStorage.getItem("isLogin"))
     let username =JSON.parse(localStorage.getItem("userh"))
       if (!users) {
-      navigate("/");
+      navigate("/login");
     }else{
        setName(username.name);
+       navigate("/");
     }
+   
+   
    
 
   }, []);
