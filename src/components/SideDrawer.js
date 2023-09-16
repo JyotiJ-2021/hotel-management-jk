@@ -18,9 +18,12 @@ export default function SwipeableTemporaryDrawer({toggleDrawer, state}) {
     };
 
     useEffect(()=>{
-        const user = JSON.parse(localStorage.getItem("userh"))
-        setName(user.name)
+        const user = JSON.parse(localStorage.getItem("userh"))  
+        if(user){
+            setName(user.name)
         setEmail(user.email)
+        }
+        
     },[])
   
 

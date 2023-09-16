@@ -12,8 +12,10 @@ const Layout = (props) => {
     let username =JSON.parse(localStorage.getItem("userh"))
       if (!users) {
       navigate("/");
+    }else{
+       setName(username.name);
     }
-    setName(username.name);
+   
 
   }, []);
   return (
