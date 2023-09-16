@@ -5,23 +5,23 @@ import { useNavigate } from "react-router";
 const Layout = (props) => {
   const navigate = useNavigate();
   const [name, setName] = useState();
-  useEffect(() => {
+  // useEffect(() => {
    
    
-    let users = JSON.parse(localStorage.getItem("isLogin"))
-    let username =JSON.parse(localStorage.getItem("userh"))
-      if (!users) {
-      navigate("/login");
-    }else{
-       setName(username.name);
-       navigate("/");
-    }
+  //   let users = JSON.parse(localStorage.getItem("isLogin"))
+  //   let username =JSON.parse(localStorage.getItem("userh"))
+  //     if (!users) {
+  //     navigate("/login");
+  //   }else{
+  //      setName(username.name);
+  //      navigate("/");
+  //   }
    
 
-  }, []);
+  // }, []);
   return (
     <div>
-      <NavBar name={name} />
+      <NavBar   />
       {props.children}
       <footer className="footer">Copyright</footer>
     </div>

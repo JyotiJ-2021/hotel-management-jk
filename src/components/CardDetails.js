@@ -1,25 +1,22 @@
+import React, { useEffect, useState } from "react";
 import { Container, Grid, Typography, Button } from "@mui/material";
 import { useParams } from "react-router";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
 import CardModal from "./CardModal";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import { CardActionArea, Rating } from "@mui/material";
 import LoadingDetails from "../pages/LoadingDetails";
+import { Link } from "react-router-dom";
 
 const CardDetails = () => {
   const params = useParams();
   const [hotelInfo, setHotelInfo] = useState({});
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => alert("Please login for reservation confirmation!");
   const handleClose = () => setOpen(false);
   const [isLoading, setLoading] = useState(false);
-  // const { isLoading } = useQuery(["repo"], () =>
-  //   axios
-  //     .get(`https://hotels-api-4ltr.onrender.com/api/hotels/${params.slug}`)
-  //     .then((res) => setHotelInfo(res.data))
-  // );
+ 
   useEffect(() => {
     setLoading(true);
     axios
@@ -81,8 +78,9 @@ const CardDetails = () => {
           </Typography>
         </Grid>
         <div className="button">
-          <Button onClick={handleOpen} style={{ textAlign: "right" }}>
-            Reserve
+          <Button onClick={handleOpen} 
+          style={{ textAlign: "right" }}>
+       Reserve   
           </Button>
         </div>
         {open && (

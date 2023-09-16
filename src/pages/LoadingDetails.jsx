@@ -3,12 +3,7 @@ import { Grid, Skeleton, Container } from "@mui/material";
 const LoadingDetails = () => {
   return (
     <div>
-      <Skeleton
-        animation="move"
-        variant="rectangular"
-        width={"100%"}
-        height={60}
-      />
+      
       <Skeleton
         animation="move"
         variant="rectangular"

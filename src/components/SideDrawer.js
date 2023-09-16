@@ -8,9 +8,10 @@ export default function SwipeableTemporaryDrawer({toggleDrawer, state}) {
     const navigate = useNavigate(); 
     const [name, setName] = useState()
     const [email, setEmail] = useState()
+    
     const logout = async () => {
       try { 
-        navigate("/login");
+        navigate("/");
         localStorage.setItem("isLogin", false)
       } catch (err) {
         console.error(err);

@@ -9,9 +9,9 @@ import Person3Icon from '@mui/icons-material/Person3';
 import { useState } from "react";
 import SwipeableTemporaryDrawer from "./SideDrawer";
 
-const NavBar = ({ name }) => {
+const NavBar = () => {
  
-
+  const isUserLogin = localStorage.getItem("isLogin")
    
   const [state, setState] = useState({
     
@@ -60,10 +60,10 @@ const NavBar = ({ name }) => {
             }} 
           >
            
-        
-         <IconButton aria-label="person3icon"   color="primary" onClick={toggleDrawer("right", true)}>
+        {isUserLogin ? <><Link to="/register">Register</Link> | <Link to="/login">Login</Link></>: <IconButton aria-label="person3icon"   color="primary" onClick={toggleDrawer("right", true)}>
          <Person3Icon/>
-         </IconButton>
+         </IconButton>}
+         
           </Box>
         </Toolbar>
       </AppBar>

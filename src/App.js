@@ -17,9 +17,9 @@ function App() {
       <BrowserRouter>
         <Suspense fallback={<LoadingSkeleton />}>
           <Routes>
-            <Route exact path="/login" element={<Login />} />
+            <Route   path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route
+            <Route exact
               path="/"
               element={
                 <Layout>
