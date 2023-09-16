@@ -1,0 +1,127 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.calendar {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.calendar th,
+.calendar td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+.calendar th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.calendar td {
+  cursor: pointer;
+}
+
+.calendar-day {
+  position: relative;
+}
+
+.calendar-day--outside {
+  color: #ccc;
+}
+
+.calendar-day--today {
+  text-decoration: underline;
+}
+
+.calendar-day--range {
+  background-color: #a3d8f4;
+}
+
+.mt-4{
+  margin-top: 10px !important;
+}
+
+.ph{
+  padding: 10px;
+}
+a{
+  color: inherit;
+  text-decoration: none;
+}
+.log{
+  padding: 48px 40px 36px;
+    height: auto;
+    width: 450px;
+    min-height: 500px; 
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    text-align: center;
+    place-content: center;
+    top: 50%;
+   
+    display: grid;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+}
+
+.log button{
+  padding: 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.log button:hover{
+  background: #61dafb;
+  color: #fff;
+}
+
+.footer{
+  position: fixed;
+  bottom: 0;
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  background: #fff;
+}
