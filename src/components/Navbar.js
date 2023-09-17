@@ -60,7 +60,7 @@ const NavBar = () => {
             }} 
           >
            
-        {isUserLogin ? <><Link to="/register">Register</Link> | <Link to="/login">Login</Link></>: <IconButton aria-label="person3icon"   color="primary" onClick={toggleDrawer("right", true)}>
+        {!isUserLogin ? <><Link to="/register">Register</Link> | <Link to="/login">Login</Link></>: <IconButton aria-label="person3icon"   color="primary" onClick={toggleDrawer("right", true)}>
          <Person3Icon/>
          </IconButton>}
          

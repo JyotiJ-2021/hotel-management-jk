@@ -15,11 +15,14 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router";
+import 'react-date-range/dist/styles.css'; // main style file
+import 'react-date-range/dist/theme/default.css'; // theme css file
+import { Calendar } from 'react-date-range';
+import { DateRange } from "react-date-range";
 
-const CardModal = ({ open, handleClose, price, hotelInfo }) => {
-  const [checkInDate, setCheckInDate] = useState(new Date());
-  const [checkOutDate, setCheckOutDate] = useState(new Date());
+const CardModal = ({ open, handleClose, price, hotelInfo }) => { 
   const [guestNumber, setGuestNumber] = React.useState(1);
+   const [dates, setDates]= useState([{startDate:new Date(), endDate:new Date(), key:"selection"}])
   const [total, setTotal] = React.useState(
     hotelInfo.pricePerNight * guestNumber
   );
@@ -33,8 +36,8 @@ const CardModal = ({ open, handleClose, price, hotelInfo }) => {
     const posts = [
       {
         id: hotelInfo.id,
-        checkInDate: checkInDate,
-        checkOutDate: checkOutDate,
+        checkInDate: dates[0].startDate,
+        checkOutDate: dates[0].endDate,
         guestNumber: guestNumber,
         total: total,
         reserveId: uuidv4(),
@@ -48,21 +51,14 @@ const CardModal = ({ open, handleClose, price, hotelInfo }) => {
 
     localStorage.setItem("reserve", JSON.stringify(newPostList));
     navigate("/history");
-    // Store the reservation data in Firestore
-    // db.collection("reservations")
-    //   .add({
-    //     guestNumber,
-    //     checkInDate,
-    //     checkOutDate,
-    //     timeStamp: auth.firestore.FieldValue.serverTimestamp(),
-    //   })
-    //   .then(() => {
-    //     alert("Reservation successful!");
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error adding reservation: ", error);
-    //   });
+   
   };
+
+  
+  const handleSelect =(e)=>{
+    console.log(e)
+  }
+console.log(dates)
   return (
     <Modal
       open={open}
@@ -89,22 +85,19 @@ const CardModal = ({ open, handleClose, price, hotelInfo }) => {
             <MenuItem value={6}>6</MenuItem>
           </Select>
         </FormControl>
-        <DatePicker
-          className="mt-4 ph"
-          selected={checkInDate}
-          onChange={(date) => setCheckInDate(date)}
-        />
-        <DatePicker
-          className="mt-4 ph"
-          selected={checkOutDate}
-          onChange={(date) => setCheckOutDate(date)}
-        />
+       
+         <DateRange className="mt-4 ph"
+              ranges={dates}
+              onChange={({selection}) => setDates([selection])}
+              minDate={new Date()}
+      />
+       
 
-        <Typography className="mt-4">
-          $ {price} *{guestNumber} : $ {price * guestNumber}
+        <Typography className="mt-4" style={{fontSize:"16px", fontWeight:"600", justifyContent:"space-between", display:"flex"}}>
+         <p> $ {price} *{guestNumber} Nights:</p> <p> $ {price * guestNumber}</p>
         </Typography>
-        <Typography className="mt-4">
-          Sub Total: $ {price * guestNumber}
+        <Typography className="mt-4 " style={{fontSize:"16px", fontWeight:"600", justifyContent:"space-between", display:"flex"}}>
+         <p> Sub Total:</p><p > $ {price * guestNumber}</p>
         </Typography>
 
         <Button

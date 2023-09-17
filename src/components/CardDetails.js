@@ -22,7 +22,8 @@ const CardDetails = () => {
   const checkFun = () => {
     const user = JSON.parse(localStorage.getItem("isLogin"));
     if (user) {
-      navigate("/history");
+      navigate("/");
+     
     } else alert("Please login for reservation confirmation!");
   };
   useEffect(() => {
@@ -89,7 +90,7 @@ const CardDetails = () => {
           </Typography>
         </Grid>
         <div className="button">
-          <Button onClick={checkFun} style={{ textAlign: "right" }}>
+          <Button onClick={handleOpen} style={{ textAlign: "right" }}>
             Reserve
           </Button>
         </div>

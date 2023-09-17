@@ -7,31 +7,22 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import NavBar from "./Navbar";
-import { Container } from "@mui/material";
+import { Container,Typography } from "@mui/material";
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 export default function History() {
   let reserveList = JSON.parse(localStorage.getItem("reserve")) || [];
-  console.log(reserveList);
-  // const fetchReservations = () => {
-  //   db.collection("reservations")
-  //     .get()
-  //     .then((querySnapshot) => {
-  //       console.log(querySnapshot);
-  //       // const reservationsData = [];
-  //       // querySnapshot.forEach((doc) => {
-  //       //   reservationsData.push({ id: doc.id, ...doc.data() });
-  //       // });
-  //       // // Update the state with the fetched data
-  //       // setReservations(reservationsData);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching reservations: ", error);
-  //     });
-  // };
-
+  
   return (
     <>
       <Container sx={{ marginTop: 15 }}>
+      <Typography
+        variant="h4"
+        sx={{ fontSize: "22px", fontWeight: "600", marginBottom: "20px" }}
+      >
+       Booking History
+      </Typography>
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 450 }} aria-label="simple table">
             <TableHead>
@@ -43,6 +34,7 @@ export default function History() {
 
                 <TableCell align="right">Total Guest</TableCell>
                 <TableCell align="right">Total Prize</TableCell>
+                <TableCell align="right">Action</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -59,6 +51,7 @@ export default function History() {
                   <TableCell align="right">{row[0].checkOutDate}</TableCell>
                   <TableCell align="right">{row[0].guestNumber}</TableCell>
                   <TableCell align="right">{row[0].total}</TableCell>
+                  <TableCell align="right"><EditIcon/><DeleteOutlineIcon/></TableCell>
                 </TableRow>
               ))}
             </TableBody>
